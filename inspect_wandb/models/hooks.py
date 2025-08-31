@@ -106,6 +106,9 @@ class WandBModelHooks(Hooks):
         else:
             self.run.tags = inspect_tags
 
+        if self.settings.tags is not None and self.run.tags is not None:
+            self.run.tags = self.run.tags + tuple(self.settings.tags)
+
     
     @override
     async def on_task_end(self, data: TaskEnd) -> None:
