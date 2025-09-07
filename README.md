@@ -231,25 +231,13 @@ eval(my_eval,
 or with command:
 `inspect eval my_eval --metadata inspect_wandb_weave_enabled=True`
 
+## Contributing
 
+Please see our [contributing guidelines](./CHANGELOG.md) if you'd like to make contributions to Inspect WandB
 
-## Development
+## Feedback
 
-If you want to develop this project, you can fork and clone the repo and then run:
-
-```bash
-uv sync --group dev
-source .venv/bin/activate
-uv add pre-commit 
-pre-commit install
-```
-
-to install for development locally.
-For editing the docs and then displaying them with `html` you additionally need 
-
-### Testing
-
-We write unit tests with `pytest`. If you want to run the tests, you can simply run `pytest`. Please consider writing a test if adding a new feature, and make sure that tests are passing before submitting changes.
+We welcome all feedback; the best way to get in touch to discuss the project is the (Inspect Community #inspect_wandb Slack Channel)[https://inspectcommunity.slack.com/archives/C09B5B00459]
 
 ## Project notes
 
