@@ -14,7 +14,7 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dependencies = [
-  "inspect_ai >= 0.3.118",
+  "inspect_ai >= 0.3.130",
   "pydantic >= 2.11, <3",
   "pydantic-settings",
   "wandb"
@@ -23,7 +23,7 @@ dependencies = [
 [project.optional-dependencies]
 weave = ["weave >= 0.52.1"]
 viz = [
-  "inspect-viz",
+  "inspect-viz @ git+https://github.com/meridianlabs-ai/inspect_viz.git ",
   "playwright"
 ]
 
