@@ -122,7 +122,7 @@ class WeaveEvaluationHooks(Hooks):
         weave_eval_logger = self.weave_eval_loggers.get(data.eval_id)
         assert weave_eval_logger is not None
         
-        summary: dict[str, dict[str, int | float]] = {}
+        summary: dict = {}
         if data.log and data.log.results:
             for score in data.log.results.scores:
                 scorer_name = score.name
@@ -130,6 +130,7 @@ class WeaveEvaluationHooks(Hooks):
                     summary[scorer_name] = {}
                     for metric_name, metric in score.metrics.items():
                         summary[scorer_name][metric_name] = metric.value
+            summary["sample_count"] = data.log.results.total_samples
         weave_eval_logger.log_summary(summary)
 
     @override
@@ -260,7 +261,6 @@ class WeaveEvaluationHooks(Hooks):
             "run_id": data.run_id,
             "task_id": data.spec.task_id,
             "eval_id": data.eval_id,
-            "sample_count": data.spec.config.limit if data.spec.config.limit is not None else data.spec.dataset.samples
         }
         
         # Add task_args key-value pairs
