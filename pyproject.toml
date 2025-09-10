@@ -50,8 +50,8 @@ build-backend = "setuptools.build_meta"
 where = ["."]
 include = ["inspect_wandb*"]
 
-[project.entry-points.inspect_ai]
-inspect_wandb = "inspect_wandb._registry"
+# [project.entry-points.inspect_ai]
+# inspect_wandb = "inspect_wandb._registry"
 
 [tool.ruff]
 exclude = [
