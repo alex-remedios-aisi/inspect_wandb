@@ -132,7 +132,7 @@ class WandBModelHooks(Hooks):
                 name=f"Inspect eval-set: {self.eval_set_log_dir}" if self._is_eval_set else None,
                 entity=self.settings.entity, 
                 project=self.settings.project,
-                resume="allow",
+                resume="allow"
             ) 
 
             if self.run.summary:
@@ -140,9 +140,12 @@ class WandBModelHooks(Hooks):
                 self._correct_samples = int(self.run.summary.get("samples_correct", 0))
 
             if self.settings.add_metadata_to_config and data.spec.metadata is not None:
-                self.run.config.update({k: v for k,v in data.spec.metadata.items() if k != "inspect_wandb_models_config"})
+                self.run.config.update(
+                    {k: v for k,v in data.spec.metadata.items() if k != "inspect_wandb_models_config"},
+                    allow_val_change=True
+                )
             if self.settings.config:
-                self.run.config.update(self.settings.config)
+                self.run.config.update(self.settings.config, allow_val_change=True)
 
             _ = self.run.define_metric(step_metric=Metric.SAMPLES, name=Metric.ACCURACY)
             self._wandb_initialized = True
